@@ -19,9 +19,9 @@ typedef struct Node{
 }Node;
 
 // 1.初始化线性表，即置单链表的表头指针为空
-void initList(Node **pNode){
+void initList(Node *pNode){
 
-    *pNode = NULL;
+    pNode = NULL;
     printf("initList函数执行，初始化成功\n");
 }
 
@@ -260,7 +260,7 @@ int main(int argc, const char * argv[]) {
 
     elemType posElem;
 
-    initList(&pList);       //链表初始化
+    initList(pList);       //链表初始化
     printList(pList);       //遍历链表，打印链表
 
     pList = creatList(pList); //创建链表

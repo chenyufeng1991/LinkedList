@@ -11,7 +11,9 @@
 #include "string.h"
 
 typedef int elemType ;
-typedef struct Node{    /* 定义单链表结点类型 */
+
+// 定义单链表结点类型
+typedef struct Node{
     elemType element;
     struct Node *next;
 }Node;
@@ -29,8 +31,8 @@ Node *creatList(Node *pHead){
     Node *p1;
     Node *p2;
 
-    p1=p2=(Node *)malloc(sizeof(Node)); //申请新节点
-    if(p1 == NULL || p2 ==NULL){
+    p1 = p2 = (Node *)malloc(sizeof(Node)); //申请新节点
+    if(p1 == NULL || p2 == NULL){
 
         printf("内存分配失败\n");
         exit(0);
@@ -47,7 +49,7 @@ Node *creatList(Node *pHead){
             p2->next = p1;       //非空表，接入表尾
         }
         p2 = p1;
-        p1=(Node *)malloc(sizeof(Node));    //再重申请一个节点
+        p1 = (Node *)malloc(sizeof(Node));    //再重申请一个节点
         if(p1 == NULL || p2 ==NULL){
 
             printf("内存分配失败\n");
@@ -65,8 +67,7 @@ Node *creatList(Node *pHead){
 void printList(Node *pHead){
     if(NULL == pHead){   //链表为空
         printf("PrintList函数执行，链表为空\n");
-    }
-    else{
+    }else{
         while(NULL != pHead){
             
             printf("%d ",pHead->element);
@@ -99,7 +100,6 @@ void clearList(Node *pHead){
 int sizeList(Node *pHead){
 
     int size = 0;
-
     while(pHead != NULL){
 
         size++;         //遍历链表size大小比链表的实际长度小1
@@ -137,9 +137,9 @@ elemType getElement(Node *pHead, int pos){
         return 0;
         //exit(1);
     }
-    while(pHead !=NULL){
+    while(pHead != NULL){
 
-        ++i;
+        i++;
         if(i == pos){
             break;
         }
@@ -196,9 +196,9 @@ int modifyElem(Node *pNode,int pos,elemType x){
         printf("modifyElem函数执行，pos值非法\n");
         return 0;
     }
-    while(pHead !=NULL){
+    while(pHead != NULL){
 
-        ++i;
+        i++;
         if(i == pos){
             break;
         }
@@ -256,14 +256,14 @@ int insertLastList(Node **pNode,elemType insertElem){
 
 int main(int argc, const char * argv[]) {
 
-    Node *pList=NULL;
+    Node *pList;            //声明头结点
 
     elemType posElem;
 
     initList(&pList);       //链表初始化
     printList(pList);       //遍历链表，打印链表
 
-    pList=creatList(pList); //创建链表
+    pList = creatList(pList); //创建链表
     printList(pList);
 
     sizeList(pList);        //链表的长度
@@ -287,8 +287,7 @@ int main(int argc, const char * argv[]) {
     printList(pList);
 
     clearList(pList);       //清空链表
-    system("pause");
-
+    printList(pList);
 
     return 0;
 }

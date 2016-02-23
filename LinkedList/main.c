@@ -11,22 +11,21 @@
 #include "string.h"
 
 typedef int elemType ;
-
 typedef struct Node{    /* 定义单链表结点类型 */
     elemType element;
     struct Node *next;
 }Node;
 
 /* 1.初始化线性表，即置单链表的表头指针为空 */
-void initList(Node **pNode)
-{
+void initList(Node **pNode){
+
     *pNode = NULL;
     printf("initList函数执行，初始化成功\n");
 }
 
 /* 2.创建线性表，此函数输入负数终止读取数据*/
-Node *creatList(Node *pHead)
-{
+Node *creatList(Node *pHead){
+
     Node *p1;
     Node *p2;
 
@@ -66,8 +65,7 @@ Node *creatList(Node *pHead)
 }
 
 /* 3.打印链表，链表的遍历*/
-void printList(Node *pHead)
-{
+void printList(Node *pHead){
     if(NULL == pHead)   //链表为空
     {
         printf("PrintList函数执行，链表为空\n");
@@ -84,8 +82,8 @@ void printList(Node *pHead)
 }
 
 /* 4.清除线性表L中的所有元素，即释放单链表L中所有的结点，使之成为一个空表 */
-void clearList(Node *pHead)
-{
+void clearList(Node *pHead){
+
     Node *pNext;            //定义一个与pHead相邻节点
 
     if(pHead == NULL)
@@ -103,8 +101,8 @@ void clearList(Node *pHead)
 }
 
 /* 5.返回单链表的长度 */
-int sizeList(Node *pHead)
-{
+int sizeList(Node *pHead){
+
     int size = 0;
 
     while(pHead != NULL)
@@ -117,8 +115,7 @@ int sizeList(Node *pHead)
 }
 
 /* 6.检查单链表是否为空，若为空则返回１，否则返回０ */
-int isEmptyList(Node *pHead)
-{
+int isEmptyList(Node *pHead){
     if(pHead == NULL)
     {
         printf("isEmptyList函数执行，链表为空\n");
@@ -130,8 +127,8 @@ int isEmptyList(Node *pHead)
 }
 
 /* 7.返回单链表中第pos个结点中的元素，若pos超出范围，则停止程序运行 */
-elemType getElement(Node *pHead, int pos)
-{
+elemType getElement(Node *pHead, int pos){
+
     int i=0;
 
     if(pos < 1)
@@ -164,8 +161,7 @@ elemType getElement(Node *pHead, int pos)
 }
 
 /* 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL */
-elemType *getElemAddr(Node *pHead, elemType x)
-{
+elemType *getElemAddr(Node *pHead, elemType x){
     if(NULL == pHead)
     {
         printf("getElemAddr函数执行，链表为空\n");
@@ -194,8 +190,8 @@ elemType *getElemAddr(Node *pHead, elemType x)
 }
 
 /* 9.把单链表中第pos个结点的值修改为x的值，若修改成功返回１，否则返回０ */
-int modifyElem(Node *pNode,int pos,elemType x)
-{
+int modifyElem(Node *pNode,int pos,elemType x){
+
     Node *pHead;
     pHead = pNode;
     int i = 0;
@@ -231,8 +227,8 @@ int modifyElem(Node *pNode,int pos,elemType x)
 }
 
 /* 10.向单链表的表头插入一个元素 */
-int insertHeadList(Node **pNode,elemType insertElem)
-{
+int insertHeadList(Node **pNode,elemType insertElem){
+
     Node *pInsert;
     pInsert = (Node *)malloc(sizeof(Node));
     memset(pInsert,0,sizeof(Node));
@@ -245,8 +241,8 @@ int insertHeadList(Node **pNode,elemType insertElem)
 }
 
 /* 11.向单链表的末尾添加一个元素 */
-int insertLastList(Node **pNode,elemType insertElem)
-{
+int insertLastList(Node **pNode,elemType insertElem){
+    
     Node *pInsert;
     Node *pHead;
     Node *pTmp; //定义一个临时链表用来存放第一个节点

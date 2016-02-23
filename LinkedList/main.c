@@ -230,7 +230,7 @@ int insertHeadList(Node **pNode,elemType insertElem){
     return 1;
 }
 
-// 11.向单链表的末尾添加一个元素 
+// 11.向单链表的末尾添加一个元素
 int insertLastList(Node **pNode,elemType insertElem){
 
     Node *pInsert;

@@ -28,8 +28,8 @@ void initList(Node *pNode){
 // 2.创建线性表，此函数输入负数终止读取数据
 Node *creatList(Node *pHead){
 
-    Node *p1;
-    Node *p2;
+    Node *p1;//表头节点；
+    Node *p2;//表尾节点；
 
     p1 = p2 = (Node *)malloc(sizeof(Node)); //申请新节点
     if(p1 == NULL || p2 == NULL){

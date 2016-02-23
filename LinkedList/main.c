@@ -30,8 +30,8 @@ Node *creatList(Node *pHead){
     Node *p2;
 
     p1=p2=(Node *)malloc(sizeof(Node)); //申请新节点
-    if(p1 == NULL || p2 ==NULL)
-    {
+    if(p1 == NULL || p2 ==NULL){
+
         printf("内存分配失败\n");
         exit(0);
     }
@@ -39,20 +39,17 @@ Node *creatList(Node *pHead){
 
     scanf("%d",&p1->element);    //输入新节点
     p1->next = NULL;         //新节点的指针置为空
-    while(p1->element > 0)        //输入的值大于0则继续，直到输入的值为负
-    {
-        if(pHead == NULL)       //空表，接入表头
-        {
+    while(p1->element > 0){        //输入的值大于0则继续，直到输入的值为负
+        if(pHead == NULL){       //空表，接入表头
             pHead = p1;
         }
-        else
-        {
+        else{
             p2->next = p1;       //非空表，接入表尾
         }
         p2 = p1;
         p1=(Node *)malloc(sizeof(Node));    //再重申请一个节点
-        if(p1 == NULL || p2 ==NULL)
-        {
+        if(p1 == NULL || p2 ==NULL){
+
             printf("内存分配失败\n");
             exit(0);
         }
@@ -66,14 +63,12 @@ Node *creatList(Node *pHead){
 
 /* 3.打印链表，链表的遍历*/
 void printList(Node *pHead){
-    if(NULL == pHead)   //链表为空
-    {
+    if(NULL == pHead){   //链表为空
         printf("PrintList函数执行，链表为空\n");
     }
-    else
-    {
-        while(NULL != pHead)
-        {
+    else{
+        while(NULL != pHead){
+            
             printf("%d ",pHead->element);
             pHead = pHead->next;
         }
@@ -86,13 +81,13 @@ void clearList(Node *pHead){
 
     Node *pNext;            //定义一个与pHead相邻节点
 
-    if(pHead == NULL)
-    {
+    if(pHead == NULL){
+
         printf("clearList函数执行，链表为空\n");
         return;
     }
-    while(pHead->next != NULL)
-    {
+    while(pHead->next != NULL){
+
         pNext = pHead->next;//保存下一结点的指针
         free(pHead);
         pHead = pNext;      //表头下移
@@ -105,8 +100,8 @@ int sizeList(Node *pHead){
 
     int size = 0;
 
-    while(pHead != NULL)
-    {
+    while(pHead != NULL){
+
         size++;         //遍历链表size大小比链表的实际长度小1
         pHead = pHead->next;
     }
@@ -116,8 +111,8 @@ int sizeList(Node *pHead){
 
 /* 6.检查单链表是否为空，若为空则返回１，否则返回０ */
 int isEmptyList(Node *pHead){
-    if(pHead == NULL)
-    {
+    if(pHead == NULL){
+
         printf("isEmptyList函数执行，链表为空\n");
         return 1;
     }
@@ -131,28 +126,27 @@ elemType getElement(Node *pHead, int pos){
 
     int i=0;
 
-    if(pos < 1)
-    {
+    if(pos < 1){
+
         printf("getElement函数执行，pos值非法\n");
         return 0;
     }
-    if(pHead == NULL)
-    {
+    if(pHead == NULL){
+
         printf("getElement函数执行，链表为空\n");
         return 0;
         //exit(1);
     }
-    while(pHead !=NULL)
-    {
+    while(pHead !=NULL){
+
         ++i;
-        if(i == pos)
-        {
+        if(i == pos){
             break;
         }
         pHead = pHead->next; //移到下一结点
     }
-    if(i < pos)                  //链表长度不足则退出
-    {
+    if(i < pos){                  //链表长度不足则退出
+
         printf("getElement函数执行，pos值超出链表长度\n");
         return 0;
     }
@@ -162,27 +156,25 @@ elemType getElement(Node *pHead, int pos){
 
 /* 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL */
 elemType *getElemAddr(Node *pHead, elemType x){
-    if(NULL == pHead)
-    {
+    if(NULL == pHead){
+
         printf("getElemAddr函数执行，链表为空\n");
         return NULL;
     }
-    if(x < 0)
-    {
+    if(x < 0){
+
         printf("getElemAddr函数执行，给定值X不合法\n");
         return NULL;
     }
-    while((pHead->element != x) && (NULL != pHead->next)) //判断是否到链表末尾，以及是否存在所要找的元素
-    {
+    while((pHead->element != x) && (NULL != pHead->next)) {//判断是否到链表末尾，以及是否存在所要找的元素
         pHead = pHead->next;
     }
-    if((pHead->element != x) && (pHead != NULL))
-    {
+    if((pHead->element != x) && (pHead != NULL)){
+
         printf("getElemAddr函数执行，在链表中未找到x值\n");
         return NULL;
     }
-    if(pHead->element == x)
-    {
+    if(pHead->element == x){
         printf("getElemAddr函数执行，元素 %d 的地址为 0x%x\n",x,&(pHead->element));
     }
 
@@ -196,26 +188,24 @@ int modifyElem(Node *pNode,int pos,elemType x){
     pHead = pNode;
     int i = 0;
 
-    if(NULL == pHead)
-    {
+    if(NULL == pHead){
         printf("modifyElem函数执行，链表为空\n");
     }
-    if(pos < 1)
-    {
+    if(pos < 1){
+
         printf("modifyElem函数执行，pos值非法\n");
         return 0;
     }
-    while(pHead !=NULL)
-    {
+    while(pHead !=NULL){
+
         ++i;
-        if(i == pos)
-        {
+        if(i == pos){
             break;
         }
         pHead = pHead->next; //移到下一结点
     }
-    if(i < pos)                  //链表长度不足则退出
-    {
+    if(i < pos) {                 //链表长度不足则退出
+
         printf("modifyElem函数执行，pos值超出链表长度\n");
         return 0;
     }
@@ -242,7 +232,7 @@ int insertHeadList(Node **pNode,elemType insertElem){
 
 /* 11.向单链表的末尾添加一个元素 */
 int insertLastList(Node **pNode,elemType insertElem){
-    
+
     Node *pInsert;
     Node *pHead;
     Node *pTmp; //定义一个临时链表用来存放第一个节点
@@ -253,8 +243,7 @@ int insertLastList(Node **pNode,elemType insertElem){
     memset(pInsert,0,sizeof(Node));
     pInsert->element = insertElem;
 
-    while(pHead->next != NULL)
-    {
+    while(pHead->next != NULL){
         pHead = pHead->next;
     }
     pHead->next = pInsert;   //将链表末尾节点的下一结点指向新添加的节点

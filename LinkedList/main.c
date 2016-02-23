@@ -16,14 +16,14 @@ typedef struct Node{    /* 定义单链表结点类型 */
     struct Node *next;
 }Node;
 
-/* 1.初始化线性表，即置单链表的表头指针为空 */
+// 1.初始化线性表，即置单链表的表头指针为空
 void initList(Node **pNode){
 
     *pNode = NULL;
     printf("initList函数执行，初始化成功\n");
 }
 
-/* 2.创建线性表，此函数输入负数终止读取数据*/
+// 2.创建线性表，此函数输入负数终止读取数据
 Node *creatList(Node *pHead){
 
     Node *p1;
@@ -61,7 +61,7 @@ Node *creatList(Node *pHead){
     return pHead;           //返回链表的头指针
 }
 
-/* 3.打印链表，链表的遍历*/
+// 3.打印链表，链表的遍历
 void printList(Node *pHead){
     if(NULL == pHead){   //链表为空
         printf("PrintList函数执行，链表为空\n");
@@ -76,7 +76,7 @@ void printList(Node *pHead){
     }
 }
 
-/* 4.清除线性表L中的所有元素，即释放单链表L中所有的结点，使之成为一个空表 */
+// 4.清除线性表L中的所有元素，即释放单链表L中所有的结点，使之成为一个空表
 void clearList(Node *pHead){
 
     Node *pNext;            //定义一个与pHead相邻节点
@@ -95,7 +95,7 @@ void clearList(Node *pHead){
     printf("clearList函数执行，链表已经清除\n");
 }
 
-/* 5.返回单链表的长度 */
+// 5.返回单链表的长度
 int sizeList(Node *pHead){
 
     int size = 0;
@@ -109,7 +109,7 @@ int sizeList(Node *pHead){
     return size;    //链表的实际长度
 }
 
-/* 6.检查单链表是否为空，若为空则返回１，否则返回０ */
+// 6.检查单链表是否为空，若为空则返回１，否则返回０
 int isEmptyList(Node *pHead){
     if(pHead == NULL){
 
@@ -121,7 +121,7 @@ int isEmptyList(Node *pHead){
     return 0;
 }
 
-/* 7.返回单链表中第pos个结点中的元素，若pos超出范围，则停止程序运行 */
+// 7.返回单链表中第pos个结点中的元素，若pos超出范围，则停止程序运行
 elemType getElement(Node *pHead, int pos){
 
     int i=0;
@@ -154,7 +154,7 @@ elemType getElement(Node *pHead, int pos){
     return pHead->element;
 }
 
-/* 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL */
+// 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL
 elemType *getElemAddr(Node *pHead, elemType x){
     if(NULL == pHead){
 
@@ -181,7 +181,7 @@ elemType *getElemAddr(Node *pHead, elemType x){
     return &(pHead->element);//返回元素的地址
 }
 
-/* 9.把单链表中第pos个结点的值修改为x的值，若修改成功返回１，否则返回０ */
+// 9.把单链表中第pos个结点的值修改为x的值，若修改成功返回１，否则返回０
 int modifyElem(Node *pNode,int pos,elemType x){
 
     Node *pHead;
@@ -216,7 +216,7 @@ int modifyElem(Node *pNode,int pos,elemType x){
     return 1;
 }
 
-/* 10.向单链表的表头插入一个元素 */
+// 10.向单链表的表头插入一个元素
 int insertHeadList(Node **pNode,elemType insertElem){
 
     Node *pInsert;
@@ -230,7 +230,7 @@ int insertHeadList(Node **pNode,elemType insertElem){
     return 1;
 }
 
-/* 11.向单链表的末尾添加一个元素 */
+// 11.向单链表的末尾添加一个元素 
 int insertLastList(Node **pNode,elemType insertElem){
 
     Node *pInsert;

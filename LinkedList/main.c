@@ -124,7 +124,7 @@ int isEmptyList(Node *pHead){
 // 7.返回单链表中第pos个结点中的元素，若pos超出范围，则停止程序运行
 elemType getElement(Node *pHead, int pos){
 
-    int i=0;
+    int i = 0;
 
     if(pos < 1){
 

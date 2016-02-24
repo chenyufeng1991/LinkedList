@@ -22,7 +22,7 @@ typedef struct ListNode{
 void initList(Node *pNode){
 
     pNode = NULL;
-    printf("initList函数执行，初始化成功\n");
+    printf("%s函数执行，初始化成功\n",__FUNCTION__);
 }
 
 // 2.创建线性表，此函数输入负数终止读取数据
@@ -59,14 +59,14 @@ Node *creatList(Node *pHead){
         scanf("%d",&p1->element);
         p1->next = NULL;
     }
-    printf("creatList函数执行，链表创建成功\n");
+    printf("%s函数执行，链表创建成功\n",__FUNCTION__);
     return pHead;           //返回链表的头指针
 }
 
 // 3.打印链表，链表的遍历
 void printList(Node *pHead){
     if(NULL == pHead){   //链表为空
-        printf("PrintList函数执行，链表为空\n");
+        printf("%s函数执行，链表为空\n",__FUNCTION__);
     }else{
         while(NULL != pHead){
             
@@ -84,7 +84,7 @@ void clearList(Node *pHead){
 
     if(pHead == NULL){
 
-        printf("clearList函数执行，链表为空\n");
+        printf("%s函数执行，链表为空\n",__FUNCTION__);
         return;
     }
     while(pHead->next != NULL){
@@ -93,7 +93,7 @@ void clearList(Node *pHead){
         free(pHead);
         pHead = pNext;      //表头下移
     }
-    printf("clearList函数执行，链表已经清除\n");
+    printf("%s函数执行，链表已经清除\n",__FUNCTION__);
 }
 
 // 5.返回单链表的长度
@@ -105,7 +105,7 @@ int sizeList(Node *pHead){
         size++;         //遍历链表size大小比链表的实际长度小1
         pHead = pHead->next;
     }
-    printf("sizeList函数执行，链表长度 %d \n",size);
+    printf("%s函数执行，链表长度 %d \n",__FUNCTION__,size);
     return size;    //链表的实际长度
 }
 
@@ -113,10 +113,10 @@ int sizeList(Node *pHead){
 int isEmptyList(Node *pHead){
     if(pHead == NULL){
 
-        printf("isEmptyList函数执行，链表为空\n");
+        printf("%s函数执行，链表为空\n",__FUNCTION__);
         return 1;
     }
-    printf("isEmptyList函数执行，链表非空\n");
+    printf("%s函数执行，链表非空\n",__FUNCTION__);
 
     return 0;
 }
@@ -128,12 +128,12 @@ elemType getElement(Node *pHead, int pos){
 
     if(pos < 1){
 
-        printf("getElement函数执行，pos值非法\n");
+        printf("%s函数执行，pos值非法\n",__FUNCTION__);
         return 0;
     }
     if(pHead == NULL){
 
-        printf("getElement函数执行，链表为空\n");
+        printf("%s函数执行，链表为空\n",__FUNCTION__);
         return 0;
         //exit(1);
     }
@@ -147,7 +147,7 @@ elemType getElement(Node *pHead, int pos){
     }
     if(i < pos){                  //链表长度不足则退出
 
-        printf("getElement函数执行，pos值超出链表长度\n");
+        printf("%s函数执行，pos值超出链表长度\n",__FUNCTION__);
         return 0;
     }
 
@@ -158,7 +158,7 @@ elemType getElement(Node *pHead, int pos){
 elemType *getElemAddr(Node *pHead, elemType x){
     if(NULL == pHead){
 
-        printf("getElemAddr函数执行，链表为空\n");
+        printf("%s函数执行，链表为空\n",__FUNCTION__);
         return NULL;
     }
 
@@ -168,12 +168,12 @@ elemType *getElemAddr(Node *pHead, elemType x){
 
     if((pHead->element != x) && (pHead != NULL)){
 
-        printf("getElemAddr函数执行，在链表中未找到x值\n");
+        printf("%s函数执行，在链表中未找到x值\n",__FUNCTION__);
         return NULL;
     }
 
     if(pHead->element == x){
-        printf("getElemAddr函数执行，元素 %d 的地址为 0x%x\n",x,&(pHead->element));
+        printf("%s函数执行，元素 %d 的地址为 0x%x\n",__FUNCTION__,x,&(pHead->element));
     }
 
     return &(pHead->element);//返回元素的地址
@@ -185,11 +185,11 @@ int modifyElem(Node *pNode,int pos,elemType x){
     int i = 0;
 
     if(NULL == pNode){
-        printf("modifyElem函数执行，链表为空\n");
+        printf("%s函数执行，链表为空\n",__FUNCTION__);
     }
     if(pos < 1){
 
-        printf("modifyElem函数执行，pos值非法\n");
+        printf("%s函数执行，pos值非法\n",__FUNCTION__);
         return 0;
     }
     while(pNode != NULL){
@@ -202,11 +202,11 @@ int modifyElem(Node *pNode,int pos,elemType x){
     }
     if(i < pos) {                 //链表长度不足则退出
 
-        printf("modifyElem函数执行，pos值超出链表长度\n");
+        printf("%s函数执行，pos值超出链表长度\n",__FUNCTION__);
         return 0;
     }
     pNode->element = x;
-    printf("modifyElem函数执行\n");
+    printf("%s函数执行\n",__FUNCTION__);
 
     return 1;
 }
@@ -220,7 +220,7 @@ int insertHeadList(Node **pNode,elemType insertElem){
     pInsert->element = insertElem;
     pInsert->next = *pNode;
     *pNode = pInsert;
-    printf("insertHeadList函数执行，向表头插入元素成功\n");
+    printf("%s函数执行，向表头插入元素成功\n",__FUNCTION__);
 
     return 1;
 }
@@ -243,7 +243,7 @@ int insertLastList(Node **pNode,elemType insertElem){
     }
     pHead->next = pInsert;   //将链表末尾节点的下一结点指向新添加的节点
     *pNode = pTmp;
-    printf("insertLastList函数执行，向表尾插入元素成功\n");
+    printf("%s函数执行，向表尾插入元素成功\n",__FUNCTION__);
     
     return 1;
 }

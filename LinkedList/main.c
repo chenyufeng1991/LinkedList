@@ -79,18 +79,15 @@ void printList(Node *pHead){
 // 4.清除线性表L中的所有元素，即释放单链表L中所有的结点，使之成为一个空表
 void clearList(Node *pHead){
 
-    Node *pNext;            //定义一个与pHead相邻节点
-
+    Node *pNext;            //定义一个与pHead相邻节点,理解为当前节点的下一个节点
     if(pHead == NULL){
-
         printf("%s函数执行，链表为空\n",__FUNCTION__);
-        return;
     }
     while(pHead->next != NULL){
 
         pNext = pHead->next;//保存下一结点的指针
-        free(pHead);
-        pHead = pNext;      //表头下移
+        free(pHead);   //释放当前节点
+        pHead = pNext;      //指向下一个节点
     }
     printf("%s函数执行，链表已经清除\n",__FUNCTION__);
 }
@@ -101,7 +98,7 @@ int sizeList(Node *pHead){
     int size = 0;
     while(pHead != NULL){
 
-        size++;         //遍历链表size大小比链表的实际长度小1
+        size++;
         pHead = pHead->next;
     }
     printf("%s函数执行，链表长度 %d \n",__FUNCTION__,size);

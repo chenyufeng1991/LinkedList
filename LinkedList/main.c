@@ -122,19 +122,17 @@ int isEmptyList(Node *pHead){
 }
 
 // 7.返回单链表中第pos个结点中的元素，若pos超出范围，则停止程序运行
-elemType getElement(Node *pHead, int pos){
+void getElement(Node *pHead, int pos){
 
     int i = 0;
 
     if(pos < 1){
 
         printf("%s函数执行，pos值非法\n",__FUNCTION__);
-        return 0;
     }
     if(pHead == NULL){
 
         printf("%s函数执行，链表为空\n",__FUNCTION__);
-        return 0;
         //exit(1);
     }
     while(pHead != NULL){
@@ -148,10 +146,9 @@ elemType getElement(Node *pHead, int pos){
     if(i < pos){                  //链表长度不足则退出
 
         printf("%s函数执行，pos值超出链表长度\n",__FUNCTION__);
-        return 0;
     }
 
-    return pHead->element;
+    printf("%s函数执行，位置 %d 中的元素为 %d\n",__FUNCTION__,pos,pHead->element);
 }
 
 // 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL
@@ -253,7 +250,7 @@ int main(int argc, const char * argv[]) {
 
     Node *pList;            //声明头结点
 
-    elemType posElem;
+//    elemType posElem;
 
     initList(pList);       //链表初始化
     printList(pList);       //遍历链表，打印链表
@@ -266,8 +263,7 @@ int main(int argc, const char * argv[]) {
 
     isEmptyList(pList);     //判断链表是否为空链表
 
-    posElem = getElement(pList,3);  //获取第三个元素，如果元素不足3个，则返回0
-    printf("getElement函数执行，位置 3 中的元素为 %d\n",posElem);
+    getElement(pList,3);  //获取第三个元素，如果元素不足3个，则返回0
     printList(pList);
 
     getElemAddr(pList,5);   //获得元素5的内存地址

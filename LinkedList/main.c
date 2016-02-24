@@ -121,26 +121,23 @@ int isEmptyList(Node *pHead){
 void getElement(Node *pHead, int pos){
 
     int i = 0;
-
     if(pos < 1){
-
         printf("%s函数执行，pos值非法\n",__FUNCTION__);
     }
-    if(pHead == NULL){
 
+    if(pHead == NULL){
         printf("%s函数执行，链表为空\n",__FUNCTION__);
-        //exit(1);
     }
+
     while(pHead != NULL){
 
         i++;
         if(i == pos){
             break;
         }
-        pHead = pHead->next; //移到下一结点
+        pHead = pHead->next;    //移到下一结点
     }
-    if(i < pos){                  //链表长度不足则退出
-
+    if(i < pos){                  //pos值超过链表长度
         printf("%s函数执行，pos值超出链表长度\n",__FUNCTION__);
     }
 

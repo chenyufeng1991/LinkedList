@@ -118,15 +118,17 @@ int isEmptyList(Node *pHead){
 }
 
 // 7.返回单链表中第pos个结点中的元素，若pos超出范围，则停止程序运行
-void getElement(Node *pHead, int pos){
+int getElement(Node *pHead, int pos){
 
     int i = 0;
     if(pos < 1){
         printf("%s函数执行，pos值非法\n",__FUNCTION__);
+        return 0;
     }
 
     if(pHead == NULL){
         printf("%s函数执行，链表为空\n",__FUNCTION__);
+        return 0;
     }
 
     while(pHead != NULL){
@@ -139,9 +141,11 @@ void getElement(Node *pHead, int pos){
     }
     if(i < pos){                  //pos值超过链表长度
         printf("%s函数执行，pos值超出链表长度\n",__FUNCTION__);
+        return 0;
     }
 
     printf("%s函数执行，位置 %d 中的元素为 %d\n",__FUNCTION__,pos,pHead->element);
+    return 1;
 }
 
 // 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL
@@ -223,10 +227,8 @@ int insertLastList(Node **pNode,elemType insertElem){
 
     Node *pInsert;
     Node *pHead;
-    Node *pTmp; //定义一个临时链表用来存放第一个节点
 
     pHead = *pNode;
-    pTmp = pHead;
     pInsert = (Node *)malloc(sizeof(Node)); //申请一个新节点
     memset(pInsert,0,sizeof(Node));
     pInsert->element = insertElem;
@@ -235,7 +237,7 @@ int insertLastList(Node **pNode,elemType insertElem){
         pHead = pHead->next;
     }
     pHead->next = pInsert;   //将链表末尾节点的下一结点指向新添加的节点
-    *pNode = pTmp;
+
     printf("%s函数执行，向表尾插入元素成功\n",__FUNCTION__);
     
     return 1;

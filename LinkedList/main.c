@@ -145,7 +145,7 @@ void getElement(Node *pHead, int pos){
 }
 
 // 8.从单链表中查找具有给定值x的第一个元素，若查找成功则返回该结点data域的存储地址，否则返回NULL
-elemType *getElemAddr(Node *pHead, elemType x){
+elemType* getElemAddr(Node *pHead, elemType x){
     if(NULL == pHead){
 
         printf("%s函数执行，链表为空\n",__FUNCTION__);
@@ -157,7 +157,7 @@ elemType *getElemAddr(Node *pHead, elemType x){
     }
 
     if((pHead->element != x) && (pHead != NULL)){
-
+        //当到达最后一个节点
         printf("%s函数执行，在链表中未找到x值\n",__FUNCTION__);
         return NULL;
     }
@@ -173,15 +173,17 @@ elemType *getElemAddr(Node *pHead, elemType x){
 int modifyElem(Node *pNode,int pos,elemType x){
 
     int i = 0;
-
     if(NULL == pNode){
         printf("%s函数执行，链表为空\n",__FUNCTION__);
+        return 0;
     }
+
     if(pos < 1){
 
         printf("%s函数执行，pos值非法\n",__FUNCTION__);
         return 0;
     }
+
     while(pNode != NULL){
 
         i++;
@@ -190,7 +192,8 @@ int modifyElem(Node *pNode,int pos,elemType x){
         }
         pNode = pNode->next; //移到下一结点
     }
-    if(i < pos) {                 //链表长度不足则退出
+
+    if(i < pos) {                 //pos值大于链表长度
 
         printf("%s函数执行，pos值超出链表长度\n",__FUNCTION__);
         return 0;
@@ -209,7 +212,7 @@ int insertHeadList(Node **pNode,elemType insertElem){
     memset(pInsert,0,sizeof(Node));
     pInsert->element = insertElem;
     pInsert->next = *pNode;
-    *pNode = pInsert;
+    *pNode = pInsert;          //头节点*pNode指向刚插入的节点，注意和上一行代码的前后顺序；
     printf("%s函数执行，向表头插入元素成功\n",__FUNCTION__);
 
     return 1;

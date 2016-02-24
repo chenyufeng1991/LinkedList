@@ -161,19 +161,17 @@ elemType *getElemAddr(Node *pHead, elemType x){
         printf("getElemAddr函数执行，链表为空\n");
         return NULL;
     }
-    if(x < 0){
 
-        printf("getElemAddr函数执行，给定值X不合法\n");
-        return NULL;
-    }
     while((pHead->element != x) && (NULL != pHead->next)) {//判断是否到链表末尾，以及是否存在所要找的元素
         pHead = pHead->next;
     }
+
     if((pHead->element != x) && (pHead != NULL)){
 
         printf("getElemAddr函数执行，在链表中未找到x值\n");
         return NULL;
     }
+
     if(pHead->element == x){
         printf("getElemAddr函数执行，元素 %d 的地址为 0x%x\n",x,&(pHead->element));
     }
@@ -275,7 +273,7 @@ int main(int argc, const char * argv[]) {
     printf("getElement函数执行，位置 3 中的元素为 %d\n",posElem);
     printList(pList);
 
-    getElemAddr(pList,5);   //获得元素5的地址
+    getElemAddr(pList,5);   //获得元素5的内存地址
 
     modifyElem(pList,4,1);  //将链表中位置4上的元素修改为1
     printList(pList);

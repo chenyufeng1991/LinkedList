@@ -43,11 +43,11 @@ Node *creatList(Node *pHead){
     p1->next = NULL;         //新节点的指针置为空
     while(p1->element > 0){        //输入的值大于0则继续，直到输入的值为负
         if(pHead == NULL){       //空表，接入表头
-            pHead = p1;          //直接把p1作为头结点
+            pHead = p1;          //直接把p1作为头结点，也可以理解为把pHead头结点指向p1
         }else{
             p2->next = p1;       //非空表，接入表尾
         }
-        p2 = p1;
+        p2 = p1;                //p1插入后，p1就是尾结点，所以p2要指向尾结点
         p1 = (Node *)malloc(sizeof(Node));    //再重申请一个节点
         if(p1 == NULL || p2 == NULL){
 

@@ -28,10 +28,10 @@ void initList(Node *pNode){
 // 2.创建线性表，此函数输入负数终止读取数据
 Node *creatList(Node *pHead){
 
-    Node *p1;//表头节点；
-    Node *p2;//表尾节点；
+    Node *p1;//表头节点，始终指向头结点
+    Node *p2;//表尾节点，始终指向链表的最后一个元素
 
-    p1 = p2 = (Node *)malloc(sizeof(Node)); //申请新节点
+    p1 = p2 = (Node *)malloc(sizeof(Node)); //申请新节点,分配空间
     if(p1 == NULL || p2 == NULL){
 
         printf("内存分配失败\n");
@@ -39,18 +39,17 @@ Node *creatList(Node *pHead){
     }
     memset(p1,0,sizeof(Node));
 
-    scanf("%d",&p1->element);    //输入新节点
+    scanf("%d",&p1->element);    //输入新节点的值
     p1->next = NULL;         //新节点的指针置为空
     while(p1->element > 0){        //输入的值大于0则继续，直到输入的值为负
         if(pHead == NULL){       //空表，接入表头
-            pHead = p1;
-        }
-        else{
+            pHead = p1;          //直接把p1作为头结点
+        }else{
             p2->next = p1;       //非空表，接入表尾
         }
         p2 = p1;
         p1 = (Node *)malloc(sizeof(Node));    //再重申请一个节点
-        if(p1 == NULL || p2 ==NULL){
+        if(p1 == NULL || p2 == NULL){
 
             printf("内存分配失败\n");
             exit(0);

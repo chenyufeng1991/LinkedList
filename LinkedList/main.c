@@ -13,9 +13,9 @@
 typedef int elemType ;
 
 // 定义单链表结点类型
-typedef struct Node{
-    elemType element;
-    struct Node *next;
+typedef struct ListNode{
+    elemType element;      //数据域
+    struct ListNode *next;   //地址域
 }Node;
 
 // 1.初始化线性表，即置单链表的表头指针为空

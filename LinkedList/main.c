@@ -250,8 +250,6 @@ int main(int argc, const char * argv[]) {
 
     Node *pList;            //声明头结点
 
-//    elemType posElem;
-
     initList(pList);       //链表初始化
     printList(pList);       //遍历链表，打印链表
 

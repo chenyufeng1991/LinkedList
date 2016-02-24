@@ -182,11 +182,9 @@ elemType *getElemAddr(Node *pHead, elemType x){
 // 9.把单链表中第pos个结点的值修改为x的值，若修改成功返回１，否则返回０
 int modifyElem(Node *pNode,int pos,elemType x){
 
-    Node *pHead;
-    pHead = pNode;
     int i = 0;
 
-    if(NULL == pHead){
+    if(NULL == pNode){
         printf("modifyElem函数执行，链表为空\n");
     }
     if(pos < 1){
@@ -194,20 +192,19 @@ int modifyElem(Node *pNode,int pos,elemType x){
         printf("modifyElem函数执行，pos值非法\n");
         return 0;
     }
-    while(pHead != NULL){
+    while(pNode != NULL){
 
         i++;
         if(i == pos){
             break;
         }
-        pHead = pHead->next; //移到下一结点
+        pNode = pNode->next; //移到下一结点
     }
     if(i < pos) {                 //链表长度不足则退出
 
         printf("modifyElem函数执行，pos值超出链表长度\n");
         return 0;
     }
-    pNode = pHead;
     pNode->element = x;
     printf("modifyElem函数执行\n");
 
